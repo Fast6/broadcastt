@@ -49,7 +49,7 @@ message.channel.send(`**# ${args}**`); // محطوط # عشان محد يستخ�
 }
 });
 client.on("message", msg => {
-    if(msg.content === 'كس زب ام يلعن خرا') {
+    if(msg.content === 'كس') {
         msg.delete();
     msg.reply("لا تسب").then(sb => {
         sb.delete(1600);
