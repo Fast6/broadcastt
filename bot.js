@@ -84,40 +84,43 @@ client.on("message", msg => {
     
     }
 })
-client.on("message", msg => {
-    if(msg.author.bot) return;
-if(msg.channel.type === 'dm') return;
-
-let p = "!";
-let msgarray = msg.content.split(" ");
-let cmd = msgarray[0];
-let args = msgarray.slice(1);
-
-if(cmd === `${p}ban`){
-    let bUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
-if(!bUser) return msg.channel.send("Can't find user!");
-let breason = args.join(" ").slice(22);
-if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.channel.send("No can do pal!");
-if(bUser.hasPermission("BAN_MEMBERS")) return msg.channel.send("That person can't be banned");
-
-let banembed = new Discord.RichEmbed()
-.setDescription("~ban~")
-.setColor("BLACK")
-.addField("banned User", `${bUser} with ID: ${bUser.id}`)
-.addField("banned By", `<@${msg.author.id}> with ID: ${msg.author.id}`)
-.addField("banned In", msg.channel)
-.addField("Time", msg.createdAt)
-.addField("Reason", breason)
-
-let banChannel = msg.guild.channels.find("name","cmd");
-if(!banChannel) return msg.channel.send("Can't find `اسم الروم` channel.");
-
-msg.guild.member(bUser).ban(breason);
-banChannel.send(banembed)
-    return;
+client.on('message', message => {
+    var prefix = "$"
+  if (message.author.x5bz) return;
+  if (!message.content.startsWith(prefix)) return;
+ 
+  let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+ 
+  let args = message.content.split(" ").slice(1);
+ 
+  if (command == "ban") {
+               if(!message.channel.guild) return message.reply('** This command only for servers**');
+         
+  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**");
+  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
+  let user = message.mentions.users.first();
+  let reason = message.content.split(" ").slice(2).join(" ");
+  /*let b5bzlog = client.channels.find("name", "5bz-log");
+  if(!b5bzlog) return message.reply("I've detected that this server doesn't have a 5bz-log text channel.");*/
+  if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
+  if(!reason) return message.reply ("**اكتب سبب الطرد**");
+  if (!message.guild.member(user)
+  .bannable) return message.reply("**لايمكنني طرد شخص اعلى من رتبتي يرجه اعطاء البوت رتبه عالي**");
+ 
+  message.guild.member(user).ban(7, user);
+ 
+  const banembed = new Discord.RichEmbed()
+  .setAuthor(`BANNED!`, user.displayAvatarURL)
+  .setColor("RANDOM")
+  .setTimestamp()
+  .addField("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
+  .addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
+  .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
+  message.channel.send({
+    embed : banembed
+  })
 }
-
-
 });
 client.on('message', m3a4x => {
   if (m3a4x.content.startsWith('$mute')) {
