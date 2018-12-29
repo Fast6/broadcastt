@@ -51,14 +51,20 @@ message.channel.send(`**# ${args}**`); // محطوط # عشان محد يستخ�
 client.on("message", msg => {
     if(msg.content === 'كس') {
         msg.delete();
-      if(msg.content === 'قحبه') {
-        msg.delete();
     msg.reply("لا تسب").then(sb => {
         sb.delete(1600);
     })
     
     }
 });
-
+client.on("message", msg => {
+    if(msg.content === 'قحبه') {
+        msg.delete();
+    msg.reply("لا تسب").then(sb => {
+        sb.delete(1600);
+    })
+    
+    }
+})
 
 client.login(process.env.BOT_TOKEN);
