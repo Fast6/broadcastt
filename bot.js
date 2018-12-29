@@ -48,5 +48,15 @@ if(!args) return;
 message.channel.send(`**# ${args}**`); // محطوط # عشان محد يستخدم البوت لتبنيد / طرد احد من السيرفر
 }
 });
+client.on("message", msg => {
+    if(msg.content === 'السبه') {
+        msg.delete();
+    msg.reply("لا تسب").then(sb => {
+        sb.delete(1600);
+    })
+    
+    }
+});
+
 
 client.login(process.env.BOT_TOKEN);
