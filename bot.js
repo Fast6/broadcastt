@@ -88,7 +88,7 @@ client.on("message", msg => {
     if(msg.author.bot) return;
 if(msg.channel.type === 'dm') return;
 
-let p = "!";
+let p = "$";
 let msgarray = msg.content.split(" ");
 let cmd = msgarray[0];
 let args = msgarray.slice(1);
@@ -109,8 +109,8 @@ let banembed = new Discord.RichEmbed()
 .addField("Time", msg.createdAt)
 .addField("Reason", breason)
 
-let banChannel = msg.guild.channels.find("name","اسم الروم");
-if(!banChannel) return msg.channel.send("Can't find `اسم الروم` channel.");
+let banChannel = msg.guild.channels.find("name","cmd");
+if(!banChannel) return msg.channel.send("Can't find `cmd` channel.");
 
 msg.guild.member(bUser).ban(breason);
 banChannel.send(banembed)
