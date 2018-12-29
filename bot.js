@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const client2 = new Discord.Client();
 const prefix = "$";
 
 // ========================================== [ CONSTRUCTERS ] =========================================
@@ -173,9 +174,8 @@ client.on("message", async message => {
 // CODES - COPYRIGHT
 
 
-client.login("NTI4MjU5NTM5NzM3Mzc4ODI2.DwjJiA.ON3GxRCCzYgOheMCdPLjlQ8F23w
-");
-client.on("message", msg => {
+client.login("NTI4MjU5NTM5NzM3Mzc4ODI2.DwjJiA.ON3GxRCCzYgOheMCdPLjlQ8F23w");
+client1.on("message", msg => {
     if(msg.author.bot) return;
 if(msg.channel.type === 'dm') return;
 
