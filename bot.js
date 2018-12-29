@@ -110,7 +110,7 @@ let banembed = new Discord.RichEmbed()
 .addField("Reason", breason)
 
 let banChannel = msg.guild.channels.find("name","cmd");
-if(!banChannel) return msg.channel.send("Can't find `cmd` channel.");
+if(!banChannel) return msg.channel.send("Can't find `اسم الروم` channel.");
 
 msg.guild.member(bUser).ban(breason);
 banChannel.send(banembed)
