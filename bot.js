@@ -88,7 +88,7 @@ client.on("message", msg => {
     if(msg.author.bot) return;
 if(msg.channel.type === 'dm') return;
 
-let p = "$";
+let p = "!";
 let msgarray = msg.content.split(" ");
 let cmd = msgarray[0];
 let args = msgarray.slice(1);
